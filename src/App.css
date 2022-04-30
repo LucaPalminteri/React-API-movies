@@ -1,0 +1,140 @@
+*{
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  background-color: #1d1d1d;
+  font-family: "Montserrat", sans-serif;
+  color: #FFFFFF;
+  position: fixed;
+  top: 0;
+}
+
+.header h1 {
+  font-size: 30px;
+  padding-left: 20px;
+}
+
+.menuButton {
+  margin-left: auto;
+  margin-right: 10px;
+  font-size: 30px;
+  padding: 0 10px;
+}
+
+.menuButton:hover {
+  cursor: pointer;
+}
+
+.menuRender {
+  color: #FFFFFF;
+  text-align: center;
+  margin-top: 56px;
+  background-color: #241744;
+}
+
+.navbarRender {
+  padding: 0;
+}
+
+.navbarRender li {
+  display: block;
+  padding: 10px 0;
+}
+
+.searchRender {
+  margin: 10px 10px;
+  margin-top: 10px;
+}
+
+.cards {
+  width: 85%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; */
+}
+
+.zero {
+  height: 0;
+  width: 0;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  margin: 60px 10px;
+  margin-bottom: 80px;
+  transition-duration: .3s;
+  text-align: center;
+}
+
+
+.navbar li{
+  display: inline-block;
+  margin: 0 20px;
+}
+
+input {
+  text-indent: 5px;
+  height: 30px;
+  font-size: 20px;
+  margin-left: auto;
+  border: none;
+  border-radius: 2px;
+}
+
+.submit {
+  background-color: #137C32;
+  height: 35px;
+  width: 150px;
+  border-radius: 2px;
+  margin-right: 20px;
+}
+
+
+.card img {
+  width: 100%;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  background-color: #1d1d1d;
+  font-family: "Montserrat", sans-serif;
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+}
+
+button {
+  font-size: 20px;
+  width: 200px;
+  height: 40px;
+  margin: 0 20px;
+  border-radius: 20px;
+  background-color: #241744;
+  color: #FFFFFF;
+  border: none;
+  transition-duration: .2s;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #137C32;
+}
+
+button:active {
+  transition-duration: 0;
+  background-color: #035C12;
+}
