@@ -9,9 +9,6 @@ function Header(props) {
   function toggleMenu() {
     setShowMenu(prev => !prev)
   }
-
-  
-
   
   useEffect(()=>{
     if (width >= 980) setShowMenu(false)
@@ -50,9 +47,9 @@ function Header(props) {
       {showMenu ? 
       <div>
       <ul className='navbarRender'>
-        <li><Link to='/movies' className='link'>Movies</Link></li>
-        <li><Link to='/most-streamed' className='link'>Most streamed</Link></li>
-        <li><Link to='categories' className='link'>Categories</Link></li>
+        <li><Link to='/movies' className='link' onClick={toggleMenu}>Movies</Link></li>
+        <li><Link to='/most-streamed' className='link' onClick={toggleMenu}>Most streamed</Link></li>
+        <li><Link to='categories' className='link' onClick={toggleMenu}>Categories</Link></li>
       </ul>
       <div >
       <input 
@@ -63,7 +60,7 @@ function Header(props) {
         value={props.input}
         onChange={props.changeInput}
       />
-      <button className='submit searchRender' type='submit'>Search</button>
+      <button className='submit searchRender' type='submit' onClick={toggleMenu}>Search</button>
       
       </div>
       </div> :

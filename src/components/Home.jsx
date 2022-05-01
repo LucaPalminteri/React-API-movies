@@ -20,8 +20,6 @@ export default function Home(props) {
 
     movie = data.find(x => x.vote_average === aux[0])
 
-    console.log(movie);
-
     const style= {
         backgroundImage: typeof(movie) == 'undefined' ? '' : `url('https://image.tmdb.org/t/p/w500/${movie.backdrop_path}')`,
         backgroundSize: 'cover'
@@ -30,6 +28,8 @@ export default function Home(props) {
     function changeMovie() {
         setPage(Math.ceil(Math.random()*400))
     }
+
+    
 
 
     return (
