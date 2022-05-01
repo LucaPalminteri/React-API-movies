@@ -5,14 +5,14 @@ import {Link} from 'react-router-dom'
 export default function Home(props) {
 
     const [data,setData] = useState([])
+    const [page,setPage] = useState(Math.ceil(Math.random()*400))
     let movie = []
-    const page = Math.ceil(Math.random()*400)
 
     useEffect(()=>{
         axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=81733fbe56cb4b598fe53cdb888c5fe8&language=es-AR&page=${page}`)
         .then(data => setData(data.data.results))
         .catch(error => setData([]))
-    },[props.page])
+    },[changeMovie])
 
     const aux = []
     data.map(x => aux.push(x.vote_average))
@@ -27,6 +27,10 @@ export default function Home(props) {
         backgroundSize: 'cover'
     }
 
+    function changeMovie() {
+        setPage(Math.ceil(Math.random()*400))
+    }
+
 
     return (
         <div>
@@ -35,10 +39,11 @@ export default function Home(props) {
                     <h2>{typeof(movie) == 'undefined' ? 'Loading...' : movie.title}</h2>
                     <p>{typeof(movie) == 'undefined' ? 'Loading...' : movie.overview}</p>
                     <div>
-                        <button>Play</button>
+                        <Link to='/streaming' className="link"><button>Play</button></Link>
                         <Link className="link" to={typeof(movie) == 'undefined' ? '/' : `/movies/${movie.id}`}><button>Info</button></Link>
                     </div>
                 </div>
+                <button onClick={changeMovie}>Random</button>
             </div>
         </div>
     )

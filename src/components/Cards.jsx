@@ -1,4 +1,4 @@
-import { useState,useEffect  } from 'react'
+import { useState,useEffect,useContext,createContext  } from 'react'
 import axios from 'axios'
 import { nanoid } from 'nanoid'
 import {Link} from 'react-router-dom'
@@ -37,9 +37,7 @@ function Cards(props) {
     }
   },[props.input])
 
-  console.log(data);
-
-
+    // Function that removes repeat movies
     // var unique = arr.filter(function(elem, index, self) {
     //   return index === self.indexOf(elem);
     // })
@@ -49,7 +47,7 @@ function Cards(props) {
         <Link to={`/movies/${info.id}`} key={nanoid()} className='link'>
           <div className='card'>
             <img src={`https://image.tmdb.org/t/p/w500/${info.poster_path}`}/>
-            <h2>{info.title}</h2>
+            <h2 className='title'>{info.title}</h2>
           </div>
         </Link>
         
