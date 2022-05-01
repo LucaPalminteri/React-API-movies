@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function Header(props) {
 
@@ -23,16 +24,16 @@ function Header(props) {
   return (
     <>
     <div className="header">
-      <h1>Pelipedia</h1>
+      <h1><Link to='/' className='link'>Pelipedia</Link></h1>
       {width < 980 ?
       <>
         <div className='menuButton' onClick={toggleMenu}>☰</div>
       </> :
       <>
       <ul className='navbar'>
-        <li>Home</li>
-        <li>Most streamed</li>
-        <li>Contact us</li>
+        <li><Link to='/movies' className='link'>Movies</Link></li>
+        <li><Link to='/most-streamed' className='link'>Most streamed</Link></li>
+        <li><Link to='categories' className='link'>Categories</Link></li>
       </ul>
       <input 
         placeholder='Search movie'
@@ -49,9 +50,9 @@ function Header(props) {
       {showMenu ? 
       <div>
       <ul className='navbarRender'>
-        <li>Home</li>
-        <li>Most streamed</li>
-        <li>Contact us</li>
+        <li><Link to='/movies' className='link'>Movies</Link></li>
+        <li><Link to='/most-streamed' className='link'>Most streamed</Link></li>
+        <li><Link to='categories' className='link'>Categories</Link></li>
       </ul>
       <div >
       <input 

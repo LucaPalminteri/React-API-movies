@@ -1,11 +1,11 @@
 import { useState,useEffect  } from 'react'
 import axios from 'axios'
 import { nanoid } from 'nanoid'
+import {Link} from 'react-router-dom'
 
 function Cards(props) {
 
   const [data, setData] = useState([])
-  const [count,setCount] = useState(1)
   const [aux, setAux] = useState([])
  
   useEffect(()=>{
@@ -28,9 +28,8 @@ function Cards(props) {
           let newArr = eachPage.filter(x => {
             console.log(x.title.toLowerCase());
             if(x.title.toLowerCase().includes(props.input.toLowerCase())) {
-              console.log("TRUE");
               setAux(prev => [...prev,x])
-            } else console.log("FALSE");
+            }
           })
         })
         .catch(error => setData([]))
@@ -38,24 +37,23 @@ function Cards(props) {
     }
   },[props.input])
 
-    console.log(aux);
+  console.log(data);
 
-    const arr = ['luca','pedro','mateo','pedro','luca','luca']
 
-    var unique = arr.filter(function(elem, index, self) {
-      console.log('index === self.indexOf(elem)');
-      console.log(`${index} === [${self}].indexOf(${elem})`);
-      console.log("");
-      return index === self.indexOf(elem);
-    })
-    console.log(unique);
+    // var unique = arr.filter(function(elem, index, self) {
+    //   return index === self.indexOf(elem);
+    // })
 
   const cards = (props.input === '' ? newCards : aux.slice(0,20)).map(info => {
       return(
-          <div key={nanoid()} className='card'>
-              <img src={`https://image.tmdb.org/t/p/w500/${info.poster_path}`}/>
-              <h2>{info.title}</h2>
+        <Link to={`/movies/${info.id}`} key={nanoid()} className='link'>
+          <div className='card'>
+            <img src={`https://image.tmdb.org/t/p/w500/${info.poster_path}`}/>
+            <h2>{info.title}</h2>
           </div>
+        </Link>
+        
+          
       )
   })
 

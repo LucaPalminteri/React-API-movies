@@ -1,19 +1,18 @@
 import { useState } from 'react'
-import './App.css'
-import Cards from './Cards'
-import Header from './Header'
-import Footer from './Footer'
+import {Routes, Route} from 'react-router-dom'
+import './styles/App.css'
+import Cards from './components/Cards'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Movie from './components/Movie'
+import Movies from './components/Movies'
+import MostStreamed from './components/MostStreamed'
+import Home from './components/Home'
+import Categories from './components/Categories'
 
 function App() {
 
-  const [page, setPage] = useState(1)
   const [input,setInput] = useState('')
-
-  function changePage(n) {
-    page === 1 && n === -1 ?
-    page :
-    setPage(prev => prev + n)
-  }
 
   function changeInput(newInput) {
     setInput(newInput.target.value)
@@ -22,16 +21,14 @@ function App() {
   return (
       <div className="App">
         <Header input={input} changeInput={changeInput}/>
-        <Cards 
-          page={page} 
-          changePage={changePage} 
-          input={input}
-        />
-        <Footer 
-          page={page} 
-          changePage={changePage} 
-          input={input}
-        />
+
+        <Routes>
+          <Route exact path='/' element={<Home />}/>
+          <Route exact path='/movies' element={<Movies />}/>
+          <Route path='/most-streamed' element={<MostStreamed />}/>
+          <Route path='/categories' element={<Categories />}/>
+          <Route path='/movies/:id' element={<Movie />} />
+        </Routes>
       </div>
   )
 }
